@@ -9,7 +9,6 @@
 */
 var numberOfSquares = 10;
 var whichSquare = 0;
-// var timer = setInterval(timerCountdown, 1000);
 
 
 $(document).ready(onReady);
@@ -17,12 +16,21 @@ $(document).ready(onReady);
 //Function that runs when html is fully loaded:
 function onReady(){
   //click listener to button:
-  $('.change-highlight').on('click', highlightASquare)
+  $('.change-highlight').on('click', highlightASquare);
   // whichSquare++;
   //call to put starting squares on DOM
   appendSquaresToDom(numberOfSquares);
-  // addTimerToDOM();
-  // timerCountdown();
+  //myTimer();
+}
+
+var intervalId = setInterval(myTimer, 1000);
+var counter = 0;
+function myTimer() {
+  console.log("in myTimer");
+    var d = new Date();
+    $(".timer").text(d.toLocaleTimeString());
+    counter++;
+    $(".timer").append(counter);
 }
 
 function highlightASquare(){
@@ -56,15 +64,5 @@ function appendSquaresToDom(number){
   }
   //append string of html
   $(".container").append(squaresToAppend);
-}
 
-// function addTimerToDOM(){
-//   // var timer = 0;
-//   timer2 = ("<h1>" + timer + "</h1>");
-//   $(".timer").append(timer2);
-// }
-//
-// function timerCountdown(){
-//     var d = new Date();
-//     document.getElementById("demo").innerHTML = d.toLocaleTimeString();
-// }
+}
